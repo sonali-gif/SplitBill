@@ -1,61 +1,135 @@
-# 🧾 FairSplit AI
+# FairSplit AI 🧾
 
-A lightweight human-in-the-loop restaurant bill splitter.
+FairSplit AI is a smart bill-splitting web application built with **Python and Streamlit**. It uses **Google Gemini AI** to analyze uploaded bills, extract food items and prices, and assign individual items to friends so everyone pays exactly for what they consumed.
 
-## What it does
+## 🚀 Features
 
-1. Upload a bill photograph.
-2. AI extracts line items, quantities, prices, subtotal, tax, service charge and total.
-3. Every extracted value can be reviewed and corrected before calculation.
-4. Assign each item to one or more people.
-5. Shared items are split between the selected people.
-6. GST/tax and service charge are distributed proportionally to what each person actually consumed.
-7. Shows a detailed per-person breakdown.
-8. Flags a printed-total mismatch.
-9. Exports the final split as CSV.
+* 📸 Upload a bill image
+* 🤖 AI-powered bill analysis using Google Gemini
+* 🧾 Extract food items and their prices
+* 👥 Add multiple friends
+* 🍕 Assign individual food items to specific friends
+* 💰 Calculate exactly how much each person owes
+* 🧮 Handle taxes and other bill charges
+* 📊 Display a clear final payment summary
+* 🌐 Simple and interactive Streamlit interface
 
-## Run locally
+## 🛠️ Tech Stack
+
+* **Python**
+* **Streamlit**
+* **Google Gemini API**
+* **Pillow (PIL)**
+* **Git & GitHub**
+
+## 📂 Project Structure
+
+```text
+FairSplit_AI/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+└── .streamlit/
+    └── secrets.toml
+```
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR-USERNAME/FairSplit_AI.git
+```
+
+### 2. Open the project folder
+
+```bash
+cd FairSplit_AI
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
-streamlit run app.py
 ```
 
-## Optional AI OCR
+## 🔑 Gemini API Key Setup
 
-Set your Gemini API key:
+Create a `.streamlit` folder in the project directory if it does not already exist.
 
-Windows PowerShell:
-```powershell
-$env:GEMINI_API_KEY="YOUR_KEY"
-streamlit run app.py
+Inside it, create:
+
+```text
+secrets.toml
 ```
 
-Or put it in `.streamlit/secrets.toml`:
+Add your Gemini API key:
 
 ```toml
-GEMINI_API_KEY="YOUR_KEY"
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
 ```
 
-Without an API key, the app still runs using its demo bill, so the complete assignment flow can be demonstrated.
+**Do not upload your API key to GitHub.**
 
-## Demo flow
+Make sure `.gitignore` contains:
 
-Use 3 members:
-- You
-- Friend 1
-- Friend 2
+```text
+.streamlit/secrets.toml
+```
 
-Upload any image, click **Use demo bill**, review the extracted values, assign items, then click **Calculate fair split**.
+## ▶️ Run the Application
 
-## Future upgrades
+Run the following command in the project terminal:
 
-- Multi-photo bill stitching for long receipts
-- Better confidence highlighting per field
-- OCR benchmarking against 12-bill ground truth
-- UPI payment links
-- QR code for settling balances
-- Tip handling
-- Percentage-based GST components (CGST/SGST)
-- Duplicate item detection
-- Handwriting-aware OCR
+```bash
+py -m streamlit run app.py
+```
+
+The application will open in your browser at:
+
+```text
+http://localhost:8501
+```
+
+## 📖 How It Works
+
+1. Upload a bill image.
+2. FairSplit AI analyzes the bill using Gemini AI.
+3. The application extracts the food items and prices.
+4. Add the people who shared the bill.
+5. Assign each food item to the person who consumed it.
+6. The application calculates each person's share.
+7. View the final amount owed by each person.
+
+## 💡 Example
+
+Suppose a bill contains:
+
+| Item   | Price | Person |
+| ------ | ----: | ------ |
+| Pizza  |  ₹400 | Sonali |
+| Burger |  ₹200 | Rahul  |
+| Pasta  |  ₹300 | Priya  |
+
+FairSplit AI assigns the items individually and calculates the amount each person needs to pay.
+
+## 🎯 Project Goal
+
+The goal of FairSplit AI is to make splitting restaurant bills **simple, accurate, and fair** by calculating expenses based on the actual food items consumed by each person instead of simply dividing the total bill equally.
+
+## 🔮 Future Improvements
+
+* Automatic detection of who consumed each item
+* Better handling of complex restaurant bills
+* Support for multiple currencies
+* Bill history and saved splits
+* QR-code based payment integration
+* Improved AI accuracy for low-quality bill images
+
+## 👩‍💻 Author
+
+**Sonali Agnihotri**
+
+B.Tech Information Technology
+Medicaps University, Indore
